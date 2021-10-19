@@ -36,7 +36,6 @@ public class LoginProvider {
         double pontuacao = new FingerprintMatcher(prova)
 	.match(candidato);
         boolean combina = pontuacao >= 40;
-        JOptionPane.showMessageDialog(null, "Diretor entrou!");
         return combina;
     }
     
@@ -56,18 +55,20 @@ public class LoginProvider {
         double pontuacao = new FingerprintMatcher(prova)
 	.match(candidato);
         boolean combina = pontuacao >= 40;
-        JOptionPane.showMessageDialog(null, "Ministro entrou!");
         return combina;
     }
     
     public NivelAcessoEnum retornaTipoAcesso(String path) throws IOException{
         
         if(verificaBiometriaDiretor(path)){
+            JOptionPane.showMessageDialog(null, "Diretor entrou!");
             return NivelAcessoEnum.DIRETOR;
         }else if(verificaBiometriaMinistro(path))
         {
+            JOptionPane.showMessageDialog(null, "Ministro entrou!");
             return NivelAcessoEnum.MINISTRO;
         }else{
+            JOptionPane.showMessageDialog(null, "Você não possuí nenhum acesso especial!");
             return NivelAcessoEnum.LIVRE;
         }
     }
