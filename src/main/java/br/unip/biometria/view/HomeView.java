@@ -5,30 +5,26 @@
  */
 package br.unip.biometria.view;
 
+import dao.BiometriaDAO;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import security.LoginProvider;
 import security.NivelAcessoEnum;
 
-/**
- *
- * @author Gasbriel
- */
-public class Home extends javax.swing.JFrame {
+public class HomeView extends javax.swing.JFrame {
     
     LoginProvider loginProvider = new LoginProvider();
 
     /**
      * Creates new form Home
      */
-    public Home() {
+    public HomeView() {
         initComponents();
     }
 
@@ -164,7 +160,9 @@ public class Home extends javax.swing.JFrame {
                     System.out.println("Ministro");
                     break;
                 case DIRETOR:
-                    System.out.println("Diretor");
+                    dispose();
+                   DiretorView diretorView = new DiretorView();                 
+                   diretorView.setVisible(true);
                     break;
                 case LIVRE:
                     System.out.println("Livre");
@@ -174,7 +172,7 @@ public class Home extends javax.swing.JFrame {
                     break;              
             }
         } catch (IOException ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
@@ -182,11 +180,6 @@ public class Home extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -194,24 +187,22 @@ public class Home extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(HomeView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                new Home().setVisible(true);
+                new HomeView().setVisible(true);
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(HomeView.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
