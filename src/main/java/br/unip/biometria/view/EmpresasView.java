@@ -5,14 +5,14 @@
  */
 package br.unip.biometria.view;
 
-import dao.BiometriaDAO;
+import br.unip.biometria.dao.BiometriaDAO;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
-import model.Empresa;
+import br.unip.biometria.model.Empresa;
 
 /**
  *
@@ -42,7 +42,7 @@ public class EmpresasView extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -54,7 +54,7 @@ public class EmpresasView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "CNPJ", "Nome", "Código Agricola", "Porcentagem Poluente"
+                "CNPJ", "Local", "Código Agricola", "Porcentagem Poluente"
             }
         ) {
             Class[] types = new Class [] {
@@ -138,7 +138,7 @@ public class EmpresasView extends javax.swing.JFrame {
         
         List<Empresa> empresas = BiometriaDAO.listaEmpresas();
         for(Empresa empresa : empresas){
-            String rowData[] = {empresa.getCnpj(), empresa.getCodAgro(), empresa.getLocalEmp(), empresa.getPorcPol()};
+            String rowData[] = {empresa.getCnpj(), empresa.getLocalEmp(), empresa.getCodAgro(), empresa.getPorcPol()};
             table.addRow(rowData);
         }
     }//GEN-LAST:event_formWindowOpened
