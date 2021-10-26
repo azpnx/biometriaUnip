@@ -6,25 +6,24 @@
 package br.unip.biometria.view;
 
 import br.unip.biometria.dao.BiometriaDAO;
+import br.unip.biometria.model.Agrotoxico;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
-import br.unip.biometria.model.Empresa;
-import br.unip.biometria.model.EmpresaPesada;
 
 /**
  *
  * @author Gasbriel
  */
-public class EmpresaPesadoView extends javax.swing.JFrame {
+public class AgrotoxicosIlegaisView extends javax.swing.JFrame {
 
     /**
      * Creates new form EmpresasView
      */
-    public EmpresaPesadoView() {
+    public AgrotoxicosIlegaisView() {
         initComponents();
     }
 
@@ -55,7 +54,7 @@ public class EmpresaPesadoView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "CNPJ", "Código Agricola", "Porcentagem Poluente"
+                "Codigo", "Marca", "Modelo", "Porcentagem Poluente"
             }
         ) {
             Class[] types = new Class [] {
@@ -104,7 +103,7 @@ public class EmpresaPesadoView extends javax.swing.JFrame {
         );
 
         jLabel9.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        jLabel9.setText("Empresas com agrotoxicos pesados");
+        jLabel9.setText("Agrotoxicos Ilegais");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,9 +136,9 @@ public class EmpresaPesadoView extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         DefaultTableModel table = (DefaultTableModel) tabelaEmpresas.getModel();
         
-        List<EmpresaPesada> empresas = BiometriaDAO.listaEmpresasPesado();
-        for(EmpresaPesada empresa : empresas){
-            String rowData[] = {empresa.getId(), empresa.getCnpj(), empresa.getCodAgro(), empresa.getPorcPol()};
+        List<Agrotoxico> agrotoxicos = BiometriaDAO.listaAgrotoxicosIlegais();
+        for(var agrotoxico : agrotoxicos){
+            String rowData[] = {agrotoxico.getCodigo(), agrotoxico.getMarca(), agrotoxico.getModelo(), agrotoxico.getTaxaPol()};
             table.addRow(rowData);
         }
     }//GEN-LAST:event_formWindowOpened
@@ -167,7 +166,7 @@ public class EmpresaPesadoView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmpresaPesadoView().setVisible(true);
+                new AgrotoxicosIlegaisView().setVisible(true);
             }
         });
     }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package security;
+package br.unip.biometria.security;
 
 import com.machinezoo.sourceafis.FingerprintImage;
 import com.machinezoo.sourceafis.FingerprintImageOptions;
@@ -12,6 +12,8 @@ import com.machinezoo.sourceafis.FingerprintTemplate;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -58,19 +60,23 @@ public class LoginProvider {
         return combina;
     }
     
-    public NivelAcessoEnum retornaTipoAcesso(String path) throws IOException{
-        
-        if(verificaBiometriaDiretor(path)){
-            JOptionPane.showMessageDialog(null, "Diretor entrou!");
-            return NivelAcessoEnum.DIRETOR;
-        }else if(verificaBiometriaMinistro(path))
-        {
-            JOptionPane.showMessageDialog(null, "Ministro entrou!");
-            return NivelAcessoEnum.MINISTRO;
-        }else{
-            JOptionPane.showMessageDialog(null, "Você não possuí nenhum acesso especial!");
-            return NivelAcessoEnum.LIVRE;
+    public NivelAcessoEnum retornaTipoAcesso(String path){
+        NivelAcessoEnum nivel = NivelAcessoEnum.LIVRE;
+        try {
+            if(verificaBiometriaDiretor(path)){
+                JOptionPane.showMessageDialog(null, "Diretor entrou!");
+                nivel = NivelAcessoEnum.DIRETOR;
+            }else if(verificaBiometriaMinistro(path)){
+                JOptionPane.showMessageDialog(null, "Ministro entrou!");
+                nivel = NivelAcessoEnum.MINISTRO;
+            }else{
+                JOptionPane.showMessageDialog(null, "Você não possuí nenhum acesso especial!");
+                nivel = NivelAcessoEnum.LIVRE;
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(LoginProvider.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return nivel;
     }
     
 }

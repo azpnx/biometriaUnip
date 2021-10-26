@@ -5,7 +5,6 @@
  */
 package br.unip.biometria.view;
 
-import dao.BiometriaDAO;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -14,8 +13,8 @@ import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import security.LoginProvider;
-import security.NivelAcessoEnum;
+import br.unip.biometria.security.LoginProvider;
+import br.unip.biometria.security.NivelAcessoEnum;
 
 public class HomeView extends javax.swing.JFrame {
     
@@ -157,7 +156,9 @@ public class HomeView extends javax.swing.JFrame {
             NivelAcessoEnum nivelAcesso = loginProvider.retornaTipoAcesso(pathArquivo.getText());
             switch(nivelAcesso){
                 case MINISTRO:
-                    System.out.println("Ministro");
+                    dispose();
+                    MinistroView ministroView = new MinistroView();
+                    ministroView.setVisible(true);
                     break;
                 case DIRETOR:
                     dispose();
@@ -165,10 +166,14 @@ public class HomeView extends javax.swing.JFrame {
                    diretorView.setVisible(true);
                     break;
                 case LIVRE:
-                    System.out.println("Livre");
+                    dispose();
+                    LivreView livreView = new LivreView();
+                    livreView.setVisible(true);
                     break;
                 default:
-                    System.out.println("erro");
+                    dispose();
+                    LivreView livre = new LivreView();
+                    livre.setVisible(true);
                     break;              
             }
         } catch (IOException ex) {

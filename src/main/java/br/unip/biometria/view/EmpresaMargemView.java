@@ -12,19 +12,18 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
-import br.unip.biometria.model.Empresa;
-import br.unip.biometria.model.EmpresaPesada;
+import br.unip.biometria.model.EmpresaMargem;
 
 /**
  *
  * @author Gasbriel
  */
-public class EmpresaPesadoView extends javax.swing.JFrame {
+public class EmpresaMargemView extends javax.swing.JFrame {
 
     /**
      * Creates new form EmpresasView
      */
-    public EmpresaPesadoView() {
+    public EmpresaMargemView() {
         initComponents();
     }
 
@@ -55,7 +54,7 @@ public class EmpresaPesadoView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "CNPJ", "Código Agricola", "Porcentagem Poluente"
+                "Id", "CNPJ", "Código Agricola", "Local Fábrica"
             }
         ) {
             Class[] types = new Class [] {
@@ -104,7 +103,7 @@ public class EmpresaPesadoView extends javax.swing.JFrame {
         );
 
         jLabel9.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        jLabel9.setText("Empresas com agrotoxicos pesados");
+        jLabel9.setText("Empresas com poluentes pesados nas margens");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,9 +136,10 @@ public class EmpresaPesadoView extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         DefaultTableModel table = (DefaultTableModel) tabelaEmpresas.getModel();
         
-        List<EmpresaPesada> empresas = BiometriaDAO.listaEmpresasPesado();
-        for(EmpresaPesada empresa : empresas){
-            String rowData[] = {empresa.getId(), empresa.getCnpj(), empresa.getCodAgro(), empresa.getPorcPol()};
+        List<EmpresaMargem> empresas = BiometriaDAO.listaEmpresasMargem();
+        for(EmpresaMargem empresa : empresas){
+            System.out.println(empresa.getId());
+            String rowData[] = {empresa.getId(), empresa.getCnpj(), empresa.getCodAgro(), empresa.getLocalFabrica()};
             table.addRow(rowData);
         }
     }//GEN-LAST:event_formWindowOpened
@@ -167,7 +167,7 @@ public class EmpresaPesadoView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmpresaPesadoView().setVisible(true);
+                new EmpresaMargemView().setVisible(true);
             }
         });
     }

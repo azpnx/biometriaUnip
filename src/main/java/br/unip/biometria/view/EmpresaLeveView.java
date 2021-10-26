@@ -13,18 +13,19 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 import br.unip.biometria.model.Empresa;
+import br.unip.biometria.model.EmpresaLeve;
 import br.unip.biometria.model.EmpresaPesada;
 
 /**
  *
  * @author Gasbriel
  */
-public class EmpresaPesadoView extends javax.swing.JFrame {
+public class EmpresaLeveView extends javax.swing.JFrame {
 
     /**
      * Creates new form EmpresasView
      */
-    public EmpresaPesadoView() {
+    public EmpresaLeveView() {
         initComponents();
     }
 
@@ -104,7 +105,7 @@ public class EmpresaPesadoView extends javax.swing.JFrame {
         );
 
         jLabel9.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        jLabel9.setText("Empresas com agrotoxicos pesados");
+        jLabel9.setText("Empresas com agrotoxicos leves");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,8 +138,8 @@ public class EmpresaPesadoView extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         DefaultTableModel table = (DefaultTableModel) tabelaEmpresas.getModel();
         
-        List<EmpresaPesada> empresas = BiometriaDAO.listaEmpresasPesado();
-        for(EmpresaPesada empresa : empresas){
+        List<EmpresaLeve> empresas = BiometriaDAO.listaEmpresasLeve();
+        for(EmpresaLeve empresa : empresas){
             String rowData[] = {empresa.getId(), empresa.getCnpj(), empresa.getCodAgro(), empresa.getPorcPol()};
             table.addRow(rowData);
         }
@@ -167,7 +168,7 @@ public class EmpresaPesadoView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmpresaPesadoView().setVisible(true);
+                new EmpresaLeveView().setVisible(true);
             }
         });
     }

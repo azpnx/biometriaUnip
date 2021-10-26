@@ -10,12 +10,12 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-public class DiretorView extends javax.swing.JFrame {
+public class MinistroView extends javax.swing.JFrame {
 
     /**
      * Creates new form DiretorView
      */
-    public DiretorView() {
+    public MinistroView() {
         initComponents();
     }
 
@@ -34,8 +34,9 @@ public class DiretorView extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         tbEmpresaLeve = new javax.swing.JButton();
         tbEmpresaPesado = new javax.swing.JButton();
-        btnAgroLegal = new javax.swing.JButton();
-        btnAgroIlegal = new javax.swing.JButton();
+        btEmpresaMargem = new javax.swing.JButton();
+        btnAgroLegal1 = new javax.swing.JButton();
+        btnAgroIlegal1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,9 +51,9 @@ public class DiretorView extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(34, 34, 34))
+                .addGap(62, 62, 62)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -62,7 +63,7 @@ public class DiretorView extends javax.swing.JFrame {
         );
 
         jLabel2.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
-        jLabel2.setText("Você está logado como diretor.");
+        jLabel2.setText("Seja bem vindo Ministro.");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton1.setText("Ver empresas");
@@ -94,23 +95,33 @@ public class DiretorView extends javax.swing.JFrame {
             }
         });
 
-        btnAgroLegal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnAgroLegal.setText("Agrotóxicos Legais");
-        btnAgroLegal.setHideActionText(true);
-        btnAgroLegal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAgroLegal.addActionListener(new java.awt.event.ActionListener() {
+        btEmpresaMargem.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btEmpresaMargem.setText("Empresas em margens");
+        btEmpresaMargem.setHideActionText(true);
+        btEmpresaMargem.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btEmpresaMargem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgroLegalActionPerformed(evt);
+                btEmpresaMargemActionPerformed(evt);
             }
         });
 
-        btnAgroIlegal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        btnAgroIlegal.setText("Agrotóxicos Ilegais");
-        btnAgroIlegal.setHideActionText(true);
-        btnAgroIlegal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAgroIlegal.addActionListener(new java.awt.event.ActionListener() {
+        btnAgroLegal1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAgroLegal1.setText("Agrotóxicos Legais");
+        btnAgroLegal1.setHideActionText(true);
+        btnAgroLegal1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAgroLegal1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgroIlegalActionPerformed(evt);
+                btnAgroLegal1ActionPerformed(evt);
+            }
+        });
+
+        btnAgroIlegal1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAgroIlegal1.setText("Agrotóxicos Ilegais");
+        btnAgroIlegal1.setHideActionText(true);
+        btnAgroIlegal1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAgroIlegal1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgroIlegal1ActionPerformed(evt);
             }
         });
 
@@ -118,43 +129,43 @@ public class DiretorView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(tbEmpresaPesado)
-                .addGap(34, 34, 34)
-                .addComponent(tbEmpresaLeve)
-                .addGap(50, 50, 50))
-            .addGroup(layout.createSequentialGroup()
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAgroLegal1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(171, 171, 171)
-                        .addComponent(jLabel2))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tbEmpresaPesado)
+                            .addComponent(btnAgroIlegal1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)
+                        .addComponent(tbEmpresaLeve, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(btnAgroLegal, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnAgroIlegal, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(183, 183, 183)
+                        .addComponent(btEmpresaMargem)))
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tbEmpresaLeve, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tbEmpresaPesado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgroIlegal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgroLegal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(btnAgroIlegal1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgroLegal1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btEmpresaMargem, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 40, Short.MAX_VALUE))
         );
 
         pack();
@@ -175,15 +186,20 @@ public class DiretorView extends javax.swing.JFrame {
         empresaPesadoView.setVisible(true);
     }//GEN-LAST:event_tbEmpresaPesadoActionPerformed
 
-    private void btnAgroLegalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgroLegalActionPerformed
+    private void btEmpresaMargemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEmpresaMargemActionPerformed
+       EmpresaMargemView empresaMargemView = new EmpresaMargemView();
+       empresaMargemView.setVisible(true);
+    }//GEN-LAST:event_btEmpresaMargemActionPerformed
+
+    private void btnAgroLegal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgroLegal1ActionPerformed
         AgrotoxicosLegaisView agrotoxicosLegaisView = new AgrotoxicosLegaisView();
         agrotoxicosLegaisView.setVisible(true);
-    }//GEN-LAST:event_btnAgroLegalActionPerformed
+    }//GEN-LAST:event_btnAgroLegal1ActionPerformed
 
-    private void btnAgroIlegalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgroIlegalActionPerformed
+    private void btnAgroIlegal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgroIlegal1ActionPerformed
         AgrotoxicosIlegaisView agrotoxicosIlegaisView = new AgrotoxicosIlegaisView();
         agrotoxicosIlegaisView.setVisible(true);
-    }//GEN-LAST:event_btnAgroIlegalActionPerformed
+    }//GEN-LAST:event_btnAgroIlegal1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,13 +214,14 @@ public class DiretorView extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new DiretorView().setVisible(true);
+            new MinistroView().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgroIlegal;
-    private javax.swing.JButton btnAgroLegal;
+    private javax.swing.JButton btEmpresaMargem;
+    private javax.swing.JButton btnAgroIlegal1;
+    private javax.swing.JButton btnAgroLegal1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
