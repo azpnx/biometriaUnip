@@ -54,7 +54,7 @@ public class EmpresaMargemView extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id", "CNPJ", "Código Agricola", "Local Fábrica"
+                "Id", "CNPJ", "Código Agricola", "Porcentagem Poluente"
             }
         ) {
             Class[] types = new Class [] {
@@ -139,7 +139,7 @@ public class EmpresaMargemView extends javax.swing.JFrame {
         List<EmpresaMargem> empresas = BiometriaDAO.listaEmpresasMargem();
         for(EmpresaMargem empresa : empresas){
             System.out.println(empresa.getId());
-            String rowData[] = {empresa.getId(), empresa.getCnpj(), empresa.getCodAgro(), empresa.getLocalFabrica()};
+            String rowData[] = {empresa.getId(), empresa.getCnpj(), empresa.getCodAgro(), empresa.getPorcPol()};
             table.addRow(rowData);
         }
     }//GEN-LAST:event_formWindowOpened

@@ -68,7 +68,7 @@
                 <Column editable="false" title="Id" type="java.lang.String"/>
                 <Column editable="false" title="CNPJ" type="java.lang.String"/>
                 <Column editable="false" title="C&#xf3;digo Agricola" type="java.lang.String"/>
-                <Column editable="false" title="Local F&#xe1;brica" type="java.lang.String"/>
+                <Column editable="false" title="Porcentagem Poluente" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

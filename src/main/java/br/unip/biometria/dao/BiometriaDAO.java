@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.unip.biometria.dao;
 
 import br.unip.biometria.model.Agrotoxico;
@@ -20,10 +15,6 @@ import br.unip.biometria.model.EmpresaLeve;
 import br.unip.biometria.model.EmpresaMargem;
 import br.unip.biometria.model.EmpresaPesada;
 
-/**
- *
- * @author Gasbriel
- */
 public class BiometriaDAO {
     
     private static final String DB_URL = "jdbc:sqlite:C:/Users/Gasbriel/Desktop/biometria/src/main/resources/dbMinisterio.db";
@@ -44,6 +35,7 @@ public class BiometriaDAO {
                 empresa.setCodAgro(rs.getString("cod_agro"));
                 empresa.setLocalEmp(rs.getString("local_emp"));
                 empresa.setPorcPol(rs.getFloat("porc_pol"));
+                empresa.setNome(rs.getString("nome"));
                 
                 empresas.add(empresa);
             }
@@ -60,18 +52,18 @@ public class BiometriaDAO {
         try (Connection conn = DriverManager.getConnection(DB_URL)){
             Statement stmt = conn.createStatement();
             
-            var query = "SELECT id_l,\n" +
-                        "       cnpj_l,\n" +
+            var query = "SELECT id,\n" +
+                        "       cnpj,\n" +
                         "       cod_agro,\n" +
                         "       porc_pol,\n" +
-                        "       cnpj_cnpj_l\n" +
+                        "       fk_empresas_cnpj\n" +
                         "  FROM emp_leve;";
             
             ResultSet rs = stmt.executeQuery(query);
             while(rs.next()){
                 EmpresaLeve empresa = new EmpresaLeve();
-                empresa.setId(rs.getInt("id_l"));
-                empresa.setCnpj(rs.getString("cnpj_l"));
+                empresa.setId(rs.getInt("id"));
+                empresa.setCnpj(rs.getString("cnpj"));
                 empresa.setCodAgro(rs.getString("cod_agro"));
                 empresa.setPorcPol(rs.getFloat("porc_pol"));
                 
@@ -90,17 +82,18 @@ public class BiometriaDAO {
         try (Connection conn = DriverManager.getConnection(DB_URL)){
             Statement stmt = conn.createStatement();
             
-            var query = "SELECT id_p,\n" +
-                    "       cnpj_p,\n" +
-                    "       cod_agro,\n" +
-                    "       porc_pol\n" +
-                    "  FROM emp_pesada;";
+            var query = "SELECT cod_agro,\n" +
+                        "       id,\n" +
+                        "       cnpj,\n" +
+                        "       porc_pol,\n" +
+                        "       fk_empresas_cnpj\n" +
+                        "  FROM emp_pesado;";
             
             ResultSet rs = stmt.executeQuery(query);
             while(rs.next()){
                 EmpresaPesada empresa = new EmpresaPesada();
-                empresa.setId(rs.getInt("id_p"));
-                empresa.setCnpj(rs.getString("cnpj_p"));
+                empresa.setId(rs.getInt("id"));
+                empresa.setCnpj(rs.getString("cnpj"));
                 empresa.setCodAgro(rs.getString("cod_agro"));
                 empresa.setPorcPol(rs.getFloat("porc_pol"));
                 
@@ -119,19 +112,19 @@ public class BiometriaDAO {
         try (Connection conn = DriverManager.getConnection(DB_URL)){
             Statement stmt = conn.createStatement();
             
-            var query = "SELECT id_pesado,\n" +
-                        "       cod_pesado,\n" +
-                        "       cnpj_m,\n" +
-                        "       local_fabrica\n" +
+            var query = "SELECT cod_agro,\n" +
+                        "       id,\n" +
+                        "       cnpj,\n" +
+                        "       porc_pol\n" +
                         "  FROM emp_margem;";
             
             ResultSet rs = stmt.executeQuery(query);
             while(rs.next()){
                 EmpresaMargem empresa = new EmpresaMargem();
-                empresa.setId(rs.getInt("id_pesado"));
-                empresa.setCnpj(rs.getString("cnpj_m"));
-                empresa.setCodAgro(rs.getString("cod_pesado"));
-                empresa.setLocalFabrica(rs.getString("local_fabrica"));
+                empresa.setId(rs.getInt("id"));
+                empresa.setCnpj(rs.getString("cnpj"));
+                empresa.setCodAgro(rs.getString("cod_agro"));
+                empresa.setPorcPol(rs.getFloat("porc_pol"));
                 
                 empresas.add(empresa);
             }
@@ -148,7 +141,7 @@ public class BiometriaDAO {
         try (Connection conn = DriverManager.getConnection(DB_URL)){
             Statement stmt = conn.createStatement();
             
-            var query = "SELECT cod_l,\n" +
+            var query = "SELECT cod,\n" +
                         "       marca,\n" +
                         "       modelo,\n" +
                         "       taxa_pol\n" +
@@ -157,7 +150,7 @@ public class BiometriaDAO {
             ResultSet rs = stmt.executeQuery(query);
             while(rs.next()){
                Agrotoxico agrotoxico = new Agrotoxico();
-               agrotoxico.setCodigo(rs.getInt("cod_l"));
+               agrotoxico.setCodigo(rs.getInt("cod"));
                agrotoxico.setMarca(rs.getString("marca"));
                agrotoxico.setModelo(rs.getString("modelo"));
                agrotoxico.setTaxaPol(rs.getFloat("taxa_pol"));
@@ -177,16 +170,16 @@ public class BiometriaDAO {
         try (Connection conn = DriverManager.getConnection(DB_URL)){
             Statement stmt = conn.createStatement();
             
-            var query = "SELECT cod_i,\n" +
-                        "       marca,\n" +
-                        "       modelo,\n" +
-                        "       taxa_pol\n" +
-                        "  FROM agro_ilegais";
+            var query = "SELECT marca,\n" +
+                        "       cod,\n" +
+                        "       taxa_pol,\n" +
+                        "       modelo\n" +
+                        "  FROM agro_ilegais;";
             
             ResultSet rs = stmt.executeQuery(query);
             while(rs.next()){
                Agrotoxico agrotoxico = new Agrotoxico();
-               agrotoxico.setCodigo(rs.getInt("cod_i"));
+               agrotoxico.setCodigo(rs.getInt("cod"));
                agrotoxico.setMarca(rs.getString("marca"));
                agrotoxico.setModelo(rs.getString("modelo"));
                agrotoxico.setTaxaPol(rs.getFloat("taxa_pol"));

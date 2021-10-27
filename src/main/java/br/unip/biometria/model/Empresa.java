@@ -1,25 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.unip.biometria.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-/**
- *
- * @author Gasbriel
- */
-@Getter @Setter
 @NoArgsConstructor
 public class Empresa {
     private String cnpj;
     private String localEmp;
     private String codAgro;
     private float porcPol;
+    private String nome;
 
     public String getCnpj() {
         return cnpj;
@@ -46,11 +37,18 @@ public class Empresa {
     }
 
     public String getPorcPol() {
-        return ""+porcPol;
+        return String.valueOf(porcPol);
     }
 
     public void setPorcPol(float porcPol) {
         this.porcPol = porcPol;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }
